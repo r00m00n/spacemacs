@@ -43,6 +43,10 @@
 	(package-refresh-contents)
 	(package-install 'multiple-cursors))
 	
+(unless (package-installed-p 'ace-jump-mode)
+	(package-refresh-contents)
+	(package-install 'ace-jump-mode))
+	
 (defalias 'yes-or-no-p 'y-or-n-p)
 
 ;; which key
@@ -55,6 +59,10 @@
 (tool-bar-mode -1)
 (menu-bar-mode -1)
 (scroll-bar-mode -1)
+(global-hl-line-mode t)
+(global-prettify-symbols-mode t)
+(setq make-backup-file nil)
+(setq auto-save-default nil)
 
 (defun setup-tide-mode ()
   (interactive)
@@ -127,6 +135,15 @@
                   :test "npm test"
                   :run "npm start"
                   :test-suffix ".spec")
+				  
+;; ace jump mode
+(autoload
+  'ace-jump-mode
+  "ace-jump-mode"
+  "Emacs quick move minor mode"
+  t)
+;; you can select the key you prefer to
+(define-key global-map (kbd "C-c SPC") 'ace-jump-mode)
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -137,7 +154,7 @@
  '(inhibit-startup-screen t)
  '(package-selected-packages
    (quote
-    (powerline multiple-cursors linum-relative ag geben-helm-projectile magit magit-find-file company counsel-projectile swiper ts-comint tss tide))))
+    (ace-jump-mode powerline multiple-cursors linum-relative ag geben-helm-projectile magit magit-find-file company counsel-projectile swiper ts-comint tss tide))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
