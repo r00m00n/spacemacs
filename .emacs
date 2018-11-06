@@ -54,6 +54,11 @@
 	:ensure t
 	:init
 	(which-key-mode))
+	
+(use-package avy
+	:ensure t
+	:bind
+	("C-c C-d" . avy-goto-char))
 
 ;; appearance
 (tool-bar-mode -1)
@@ -63,6 +68,11 @@
 (global-prettify-symbols-mode t)
 (setq make-backup-file nil)
 (setq auto-save-default nil)
+
+(defun config-visit()
+	(interactive)
+	(find-file "~/.emacs"))
+(global-set-key (kbd "C-c e") 'config-visit)
 
 (defun setup-tide-mode ()
   (interactive)
