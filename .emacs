@@ -68,6 +68,21 @@
 (global-prettify-symbols-mode t)
 (setq make-backup-file nil)
 (setq auto-save-default nil)
+(setq ring-bell-function 'ignore)
+
+(defun split-and-follow-horizontally)
+  (interactive)
+  (split-window-below)
+  (balance-windows)
+  (other-window))
+(global-set-key (kbd "C-x 2") 'split-and-follow-horizontally) 
+
+(defun split-and-follow-vertically()
+  (interactive)
+  (split-window-right)
+  (balance-windows)
+  (other-window))
+(global-set-key (kbd "C-x 3") 'split-and-follow-vertically)
 
 (defun config-visit()
 	(interactive)
