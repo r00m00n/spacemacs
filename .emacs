@@ -5,7 +5,7 @@
 ;; You may delete these explanatory comments.
 (package-initialize)
 
-(set-frame-font "Noto Mono 11" nil t)
+(set-frame-font "Noto Mono 12" nil t)
 
 ;; packages
 (require 'package)
@@ -14,6 +14,36 @@
 (unless (package-installed-p 'use-package)
 	(package-refresh-contents)
 	(package-install 'use-package))
+
+(unless (package-installed-p 'tide)
+	(package-refresh-contents)
+	(package-install 'tide))
+
+(unless (package-installed-p 'linum-relative)
+	(package-refresh-contents)
+	(package-install 'linum-relative))
+	
+(unless (package-installed-p 'linum-relative)
+	(package-refresh-contents)
+	(package-install 'linum-relative))
+	
+(unless (package-installed-p 'magit)
+	(package-refresh-contents)
+	(package-install 'magit))
+	
+(unless (package-installed-p 'ivy)
+	(package-refresh-contents)
+	(package-install 'ivy))
+	
+(unless (package-installed-p 'powerline)
+	(package-refresh-contents)
+	(package-install 'powerline))
+
+(unless (package-installed-p 'multiple-cursors)
+	(package-refresh-contents)
+	(package-install 'multiple-cursors))
+	
+(defalias 'yes-or-no-p 'y-or-n-p)
 
 ;; which key
 (use-package which-key
