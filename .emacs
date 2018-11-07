@@ -12,53 +12,60 @@
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
 (package-initialize)
 (unless (package-installed-p 'use-package)
-	(package-refresh-contents)
-	(package-install 'use-package))
+  (package-refresh-contents)
+  (package-install 'use-package))
 
 (unless (package-installed-p 'tide)
-	(package-refresh-contents)
-	(package-install 'tide))
+  (package-refresh-contents)
+  (package-install 'tide))
 
 (unless (package-installed-p 'linum-relative)
-	(package-refresh-contents)
-	(package-install 'linum-relative))
-	
+  (package-refresh-contents)
+  (package-install 'linum-relative))
+
 (unless (package-installed-p 'linum-relative)
-	(package-refresh-contents)
-	(package-install 'linum-relative))
-	
+  (package-refresh-contents)
+  (package-install 'linum-relative))
+
 (unless (package-installed-p 'magit)
-	(package-refresh-contents)
-	(package-install 'magit))
-	
+  (package-refresh-contents)
+  (package-install 'magit))
+
 (unless (package-installed-p 'ivy)
-	(package-refresh-contents)
-	(package-install 'ivy))
-	
+  (package-refresh-contents)
+  (package-install 'ivy))
+
 (unless (package-installed-p 'powerline)
-	(package-refresh-contents)
-	(package-install 'powerline))
+  (package-refresh-contents)
+  (package-install 'powerline))
 
 (unless (package-installed-p 'multiple-cursors)
-	(package-refresh-contents)
-	(package-install 'multiple-cursors))
-	
+  (package-refresh-contents)
+  (package-install 'multiple-cursors))
+
 (unless (package-installed-p 'ace-jump-mode)
-	(package-refresh-contents)
-	(package-install 'ace-jump-mode))
-	
+  (package-refresh-contents)
+  (package-install 'ace-jump-mode))
+
 (defalias 'yes-or-no-p 'y-or-n-p)
 
 ;; which key
 (use-package which-key
-	:ensure t
-	:init
-	(which-key-mode))
-	
+  :ensure t
+  :init
+  (which-key-mode))
+
 (use-package avy
-	:ensure t
-	:bind
-	("C-c C-d" . avy-goto-char))
+  :ensure t
+  :bind
+  ("C-c C-d" . avy-goto-char))
+
+(use-package yasnippet
+  :ensure t
+  :config
+  (use-package yasnippet-snippets
+    :ensure t)
+  (yas-reload-all))
 
 ;; appearance
 (tool-bar-mode -1)
@@ -70,11 +77,11 @@
 (setq auto-save-default nil)
 (setq ring-bell-function 'ignore)
 
-(defun split-and-follow-horizontally)
-  (interactive)
-  (split-window-below)
-  (balance-windows)
-  (other-window))
+(defun split-and-follow-horizontally()
+	(interactive)
+	(split-window-below)
+	(balance-windows)
+	(other-window))
 (global-set-key (kbd "C-x 2") 'split-and-follow-horizontally) 
 
 (defun split-and-follow-vertically()
@@ -115,9 +122,8 @@
 (linum-mode)
 (linum-relative-on)
 
-;; powerline
-(require 'powerline)
-(powerline-default-theme)
+;; doom modeline
+
 
 ;; multiple cursors
 (require 'multiple-cursors)
@@ -179,7 +185,7 @@
  '(inhibit-startup-screen t)
  '(package-selected-packages
    (quote
-    (ace-jump-mode powerline multiple-cursors linum-relative ag geben-helm-projectile magit magit-find-file company counsel-projectile swiper ts-comint tss tide))))
+    (doom ace-jump-mode powerline multiple-cursors linum-relative ag geben-helm-projectile magit magit-find-file company counsel-projectile swiper ts-comint tss tide))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
