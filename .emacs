@@ -77,6 +77,9 @@
 (setq auto-save-default nil)
 (setq ring-bell-function 'ignore)
 
+(setq w32-pass-lwindow-to-system nil)
+(setq w32-lwindow-modifier 'super) ; Left Windows key
+
 (defun split-and-follow-horizontally()
 	(interactive)
 	(split-window-below)
@@ -157,7 +160,7 @@
 
 ;; projectile specific
 (projectile-mode +1)
-(define-key projectile-mode-map (kbd "s-p") 'projectile-command-map)
+(define-key projectile-mode-map (kbd "s-o") 'projectile-command-map)
 (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
 (setq projectile-indexing-method 'alien)
 
@@ -192,3 +195,4 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
+(put 'upcase-region 'disabled nil)
