@@ -47,6 +47,9 @@
   (package-refresh-contents)
   (package-install 'ace-jump-mode))
 
+(unless (package-installed-p 'indium)
+  (package-install 'indium))
+
 (defalias 'yes-or-no-p 'y-or-n-p)
 
 ;; which key
@@ -189,7 +192,7 @@
  '(inhibit-startup-screen t)
  '(package-selected-packages
    (quote
-    (afternoon-theme spaceline company-mode ace-jump-mode powerline multiple-cursors linum-relative ag geben-helm-projectile magit magit-find-file company counsel-projectile swiper ts-comint tss tide))))
+    (indium afternoon-theme spaceline company-mode ace-jump-mode powerline multiple-cursors linum-relative ag geben-helm-projectile magit magit-find-file company counsel-projectile swiper ts-comint tss tide))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
