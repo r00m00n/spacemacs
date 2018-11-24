@@ -1,4 +1,4 @@
-
+?
 ;; Added by Package.el.  This must come before configurations of
 ;; installed packages.  Don't delete this line.  If you don't want it,
 ;; just comment it out by adding a semicolon to the start of the line.
@@ -35,6 +35,10 @@
   (package-refresh-contents)
   (package-install 'linum-relative))
 
+(unless (package-installed-p 'company)
+  (package-refresh-contents)
+  (package-install 'company))
+
 (unless (package-installed-p 'magit)
   (package-refresh-contents)
   (package-install 'magit))
@@ -59,6 +63,9 @@
   (package-refresh-contents)
   (package-install 'ace-jump-mode))
 
+(unless (package-installed-p 'indium)
+  (package-install 'indium))
+
 (defalias 'yes-or-no-p 'y-or-n-p)
 
 ;; which key
@@ -66,6 +73,16 @@
   :ensure t
   :init
   (which-key-mode))
+
+(use-package spaceline 
+  :ensure t
+  :config
+  (require 'spaceline-config)
+  (setq powerline-default-separator (quote nil))
+  (spaceline-emacs-theme))
+
+(use-package afternoon-theme 
+  :ensure t)
 
 (use-package avy
   :ensure t
@@ -79,6 +96,13 @@
     :ensure t)
   (yas-reload-all))
 
+(use-package tide
+  :ensure t
+  :after (typescript-mode company flycheck)
+  :hook ((typescript-mode . tide-setup)
+         (typescript-mode . tide-hl-identifier-mode)
+         (before-save . tide-format-before-save)))
+
 ;; appearance
 (tool-bar-mode -1)
 (menu-bar-mode -1)
@@ -91,6 +115,8 @@
 
 (setq w32-pass-lwindow-to-system nil)
 (setq w32-lwindow-modifier 'super) ; Left Windows key
+
+(add-hook 'after-init-hook 'global-company-mode)
 
 (defun split-and-follow-horizontally()
 	(interactive)
@@ -111,24 +137,6 @@
 	(find-file "~/.emacs"))
 (global-set-key (kbd "C-c e") 'config-visit)
 
-(defun setup-tide-mode ()
-  (interactive)
-  (tide-setup)
-  (flycheck-mode +1)
-  (setq flycheck-check-syntax-automatically '(save mode-enabled))
-  (eldoc-mode +1)
-  (tide-hl-identifier-mode +1)
-  ;; company is an optional dependency. You have to
-  ;; install it separately via package-install
-  ;; `M-x package-install [ret] company`
-  (company-mode +1))
-;; aligns annotation to the right hand side
-(setq company-tooltip-align-annotations t)
-
-;; formats the buffer before saving
-(add-hook 'before-save-hook 'tide-format-before-save)
-
-(add-hook 'typescript-mode-hook #'setup-tide-mode)
 
 ;; lines specific
 (setq-default truncate-lines t)
@@ -136,9 +144,6 @@
 (global-linum-mode 1)
 (linum-mode)
 (linum-relative-on)
-
-;; doom modeline
-
 
 ;; multiple cursors
 (require 'multiple-cursors)
@@ -165,7 +170,7 @@
 (global-set-key (kbd "<f2> u") 'counsel-unicode-char)
 (global-set-key (kbd "C-c g") 'counsel-git)
 (global-set-key (kbd "C-c j") 'counsel-git-grep)
-(global-set-key (kbd "C-c k") 'counsel-ag)
+(global-set-key (kbd "C-c k") 'counsel-rg)
 (global-set-key (kbd "C-x l") 'counsel-locate)
 (global-set-key (kbd "C-S-o") 'counsel-rhythmbox)
 (define-key minibuffer-local-map (kbd "C-r") 'counsel-minibuffer-history)
@@ -197,6 +202,9 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(custom-enabled-themes (quote (deeper-blue)))
+ '(custom-safe-themes
+   (quote
+    ("aaffceb9b0f539b6ad6becb8e96a04f2140c8faa1de8039a343a4f1e009174fb" default)))
  '(inhibit-startup-screen t)
  '(package-selected-packages
    (quote
@@ -208,3 +216,4 @@
  ;; If there is more than one, they won't work right.
  )
 (put 'upcase-region 'disabled nil)
+(put 'dired-find-alternate-file 'disabled nil)
