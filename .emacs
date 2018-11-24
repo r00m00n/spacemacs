@@ -5,7 +5,7 @@
 ;; You may delete these explanatory comments.
 (package-initialize)
 
-(set-frame-font "Noto Mono 12" nil t)
+(set-frame-font "Source Code Pro 12" nil t)
 
 ;; packages
 (require 'package)
@@ -14,6 +14,14 @@
 (unless (package-installed-p 'use-package)
   (package-refresh-contents)
   (package-install 'use-package))
+
+(unless (package-installed-p 'use-package)
+  (package-refresh-contents)
+  (package-install 'use-package))
+
+(unless (package-installed-p 'projectile)
+  (package-refresh-contents)
+  (package-install 'projectile))
 
 (unless (package-installed-p 'tide)
   (package-refresh-contents)
@@ -34,6 +42,10 @@
 (unless (package-installed-p 'ivy)
   (package-refresh-contents)
   (package-install 'ivy))
+
+(unless (package-installed-p 'counsel)
+  (package-refresh-contents)
+  (package-install 'counsel))
 
 (unless (package-installed-p 'powerline)
   (package-refresh-contents)
@@ -188,7 +200,7 @@
  '(inhibit-startup-screen t)
  '(package-selected-packages
    (quote
-    (doom ace-jump-mode powerline multiple-cursors linum-relative ag geben-helm-projectile magit magit-find-file company counsel-projectile swiper ts-comint tss tide))))
+    (swiper-helm counsel ivy doom ace-jump-mode powerline multiple-cursors linum-relative ag geben-helm-projectile magit magit-find-file company counsel-projectile swiper ts-comint tss tide))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
