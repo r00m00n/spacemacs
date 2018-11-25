@@ -151,6 +151,11 @@
 (global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
 (global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
 
+;; yasnippet
+(add-hook 'lua-mode-hook 'yas-minor-mode)
+(add-hook 'typescript-mode-hook 'yas-minor-mode)
+(add-hook 'javascript-mode-hook 'yas-minor-mode)
+
 ;; magit
 (global-set-key (kbd "C-x g") 'magit-status)
 
