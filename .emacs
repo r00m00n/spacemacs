@@ -7,7 +7,7 @@
 ;;; Code:
 (package-initialize)
 
-(set-frame-font "Source Code Pro 12" nil t)
+(set-frame-font "Noto Mono 13" nil t)
 
 ;; packages
 (require 'package)
@@ -53,10 +53,6 @@
   (package-refresh-contents)
   (package-install 'counsel))
 
-(unless (package-installed-p 'powerline)
-  (package-refresh-contents)
-  (package-install 'powerline))
-
 (unless (package-installed-p 'multiple-cursors)
   (package-refresh-contents)
   (package-install 'multiple-cursors))
@@ -79,12 +75,10 @@
   :init
   (which-key-mode))
 
-(use-package spaceline
-  :ensure t
-  :config
-  (require 'spaceline-config)
-  (setq powerline-default-separator (quote nil))
-  (spaceline-emacs-theme))
+(use-package doom-modeline
+      :ensure t
+      :defer t
+      :hook (after-init . doom-modeline-init))
 
 (use-package afternoon-theme
   :ensure t)
@@ -229,7 +223,7 @@
  '(inhibit-startup-screen t)
  '(package-selected-packages
    (quote
-    (expand-region expandregion expandpregion swiper-helm counsel ivy doom ace-jump-mode powerline multiple-cursors linum-relative ag geben-helm-projectile magit magit-find-file company counsel-projectile swiper ts-comint tss tide))))
+    (doom-modeline expand-region expandregion expandpregion swiper-helm counsel ivy doom ace-jump-mode powerline multiple-cursors linum-relative ag geben-helm-projectile magit magit-find-file company counsel-projectile swiper ts-comint tss tide))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
