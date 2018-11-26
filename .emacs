@@ -50,6 +50,9 @@
 (unless (package-installed-p 'indium)
   (package-install 'indium))
 
+;; (unless (package-installed-p 'js2-mode)
+  ;; (package-install 'js2-mode))
+
 (defalias 'yes-or-no-p 'y-or-n-p)
 
 ;; which key
@@ -101,6 +104,8 @@
 (setq w32-lwindow-modifier 'super) ; Left Windows key
 
 (add-hook 'after-init-hook 'global-company-mode)
+;; (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
+;; (add-hook 'js-mode-hook 'js2-minor-mode)
 
 (defun split-and-follow-horizontally()
 	(interactive)
