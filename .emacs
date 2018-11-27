@@ -102,7 +102,8 @@
 
 (use-package expand-region
   :ensure t
-  :bind ("C-q" . er/expand-region))
+  :bind (("C-q" . er/expand-region)
+	 ("M-q" . er/contract-region)))
 
 (use-package omnisharp
   :ensure t
@@ -114,7 +115,15 @@
   :ensure t
   :hook (('js-mode-hook #'smartparens-mode)
 	 ('typescript-mode-hook #'smartparens-mode)
-	 ('csharp-mode-hook #'smartparens-mode)))
+	 ('csharp-mode-hook #'smartparens-mode)
+	 ('elisp-mode-hook #'smartparens-mode)
+	 ('js-mode-hook #'show-smartpars-mode)
+	 ('typescript-mode-hook #'show-smartparens-mode)
+	 ('csharp-mode-hook #'show-smartparens-mode)
+	 ('elisp-mode-hook #'show-smartparens-mode)))
+
+(use-package s
+  :ensure t)
 
 ;; appearance
 (tool-bar-mode -1)
@@ -219,9 +228,9 @@
   "Emacs quick move minor mode"
   t)
 ;; you can select the key you prefer to
-(define-key global-map (kbd "C-c SPC") 'ace-jump-char-mode)
-(define-key global-map (kbd "C-c C-l") 'ace-jump-line-mode)
-(define-key global-map (kbd "C-c C-k") 'ace-jump-mode)
+(define-key global-map (kbd "M-g SPC") 'ace-jump-char-mode)
+(define-key global-map (kbd "M-g l") 'ace-jump-line-mode)
+(define-key global-map (kbd "M-g k") 'ace-jump-mode)
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
