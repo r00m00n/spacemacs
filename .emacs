@@ -7,7 +7,7 @@
 ;;; Code:
 (package-initialize)
 
-(set-frame-font "Noto Mono 13" nil t)
+(set-frame-font "DejaVu Sans Mono Book 13" nil t)
 
 ;; packages
 (require 'package)
@@ -73,9 +73,6 @@
   :config
   (load-theme 'doom-dracula t))
 
-(use-package afternoon-theme
-  :ensure t)
-
 (use-package avy
   :ensure t
   :bind
@@ -138,7 +135,7 @@
 (setq auto-save-default nil)
 (setq ring-bell-function 'ignore)
 
-(setq doom-modeline-icon nil)
+(setq doom-modeline-icon t)
 (setq w32-pass-lwindow-to-system nil)
 (setq w32-lwindow-modifier 'super) ; Left Windows key
 
@@ -240,17 +237,14 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(custom-enabled-themes (quote (deeper-blue)))
+ '(custom-enabled-themes (quote (doom-dracula)))
  '(custom-safe-themes
    (quote
     ("aaffceb9b0f539b6ad6becb8e96a04f2140c8faa1de8039a343a4f1e009174fb" default)))
  '(inhibit-startup-screen t)
- '(jdee-db-active-breakpoint-face-colors (cons "#1E2029" "#bd93f9"))
- '(jdee-db-requested-breakpoint-face-colors (cons "#1E2029" "#50fa7b"))
- '(jdee-db-spec-breakpoint-face-colors (cons "#1E2029" "#565761"))
  '(package-selected-packages
    (quote
-    (fsharp-mode smartparens omnisharp doom-themes doom-modeline expand-region expandregion expandpregion swiper-helm counsel ivy doom ace-jump-mode powerline multiple-cursors linum-relative ag geben-helm-projectile magit magit-find-file company counsel-projectile swiper ts-comint tss tide))))
+    (fsharp-mode omnisharp doom-themes doom-modeline expand-region expandregion expandpregion swiper-helm counsel ivy doom ace-jump-mode powerline multiple-cursors linum-relative ag geben-helm-projectile magit magit-find-file company counsel-projectile swiper ts-comint tss tide))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
